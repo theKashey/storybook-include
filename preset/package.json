@@ -1,0 +1,5 @@
+{
+  "main": "../dist/es5/preset.js",
+  "module": "../dist/es2015/preset.js",
+  "module:es2019": "../dist/es2019/preset.js"
+}
