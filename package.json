@@ -1,7 +1,7 @@
 {
   "name": "storybook-include",
   "displayName": "Storybook include",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Folder based storybook configuration",
   "main": "dist/es5/index.js",
   "module": "dist/es2015/index.js",
