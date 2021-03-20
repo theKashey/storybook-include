@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { dirname, join, relative } from 'path';
+import { dirname, join, relative, sep } from 'path';
 
 import * as Babel from '@babel/core';
 import type { PluginObj } from '@babel/core';
@@ -28,7 +28,7 @@ function findIncludes(file: string) {
   while (path.length > 1) {
     const file = tryFindInclude(path);
     if (file) {
-      found.push([path, relative(context, file)]);
+      found.push([path + sep, relative(context, file)]);
     }
     path = dirname(path);
   }
