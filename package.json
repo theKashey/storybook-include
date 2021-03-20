@@ -1,6 +1,7 @@
 {
   "name": "storybook-include",
   "displayName": "Storybook include",
+  "icon": "https://raw.githubusercontent.com/theKashey/storybook-include/main/assets/logo.png",
   "version": "0.0.1",
   "description": "Folder based storybook configuration",
   "main": "dist/es5/index.js",
