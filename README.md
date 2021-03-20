@@ -1,6 +1,5 @@
 <div align="center">
   <h1>Storybook Include</h1>
-  <h2>Code splitting which always works<sup>*</sup></h2>
   <br/>
   <img src="./assets/logo.png" alt="storybook include logo" width="200" align="center">
   <br/>
