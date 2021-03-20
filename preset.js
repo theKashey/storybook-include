@@ -1,1 +1,1 @@
-modules.exports = require('./preset');
+module.exports = require('./preset-entry');
