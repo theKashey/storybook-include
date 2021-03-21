@@ -1,13 +1,15 @@
 {
   "name": "storybook-include",
-  "displayName": "Storybook include",
-  "icon": "https://raw.githubusercontent.com/theKashey/storybook-include/main/assets/logo.png",
   "version": "1.0.2",
   "description": "Folder based storybook configuration",
   "main": "dist/es5/index.js",
   "module": "dist/es2015/index.js",
   "module:es2019": "dist/es2019/index.js",
   "types": "dist/es5/index.d.ts",
+  "storybook": {
+    "displayName": "Storybook include",
+    "icon": "https://raw.githubusercontent.com/theKashey/storybook-include/main/assets/logo.png"
+  },
   "scripts": {
     "test": "jest",
     "dev": "lib-builder dev",

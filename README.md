@@ -46,7 +46,11 @@ within .storybook/main.js:
 
 ```js
 module.exports = {
-  addons: ['storybook-include'],
+  addons: [
+    'storybook-include',
+    // or
+    require.resolve('storybook-include/preset'),
+  ],
 };
 ```
 
