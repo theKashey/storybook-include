@@ -48,7 +48,8 @@
   },
   "files": [
     "dist",
-    "preset"
+    "preset.js",
+    "preset-entry"
   ],
   "keywords": [
     "addon",

@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Storybook Include</h1>
   <br/>
-  <img src="./assets/logo.png" alt="storybook include logo" width="200" align="center">
+  <img src="https://raw.githubusercontent.com/theKashey/storybook-include/main/assets/logo.png" alt="storybook include logo" width="200" align="center">
   <br/>
   <br/>
    Controlling decorators in monorepo environments
