@@ -13,8 +13,8 @@
     <img src="https://img.shields.io/npm/v/storybook-include.svg?style=flat-square" />
   </a>
 
-  <a href="https://travis-ci.org/github/theKashey/storybook-include">
-    <img src="https://travis-ci.org/theKashey/storybook-include.svg" />
+  <a href="https://travis-ci.com/github/theKashey/storybook-include">
+    <img src="https://travis-ci.com/theKashey/storybook-include.svg" />
   </a>
 
   <a href="https://www.npmjs.com/package/storybook-include">
@@ -51,6 +51,8 @@ module.exports = {
 ```
 
 # Usage
+
+- no changes has to be made to stories, everything can be configured _externaly_
 
 - create a `storybook.include.js`, or `.ts` or `.jsx/.tsx` in a folder. It can be any folder, including your home folder
 - configure which decorators has to be included
