@@ -104,7 +104,7 @@ Theoretically that affects performance for non cached systems.
 
 ## See also
 
-- https://github.com/atlassian-labs/babel-plugin-storybook-csf-title
+- [storybook-csf-title](https://github.com/atlassian-labs/babel-plugin-storybook-csf-title) - a plugin with close semantic - creates `title` for a storybook basing on the location of a story file.
 
 # License
 
