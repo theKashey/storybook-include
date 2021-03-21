@@ -4,7 +4,7 @@ export type StoryOptions = {
   name: string;
   filename: string;
 };
-export type StoryDecoratorFactory = (
+export type StoryDecoratorFactory<ReturnType = any> = (
   story: Annotations<unknown, unknown>,
   options: StoryOptions
-) => DecoratorFunction[] | undefined | void;
+) => DecoratorFunction<ReturnType>[] | undefined | void;

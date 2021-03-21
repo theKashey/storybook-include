@@ -4,7 +4,7 @@ let libraryIsDirty = false;
 let library: Record<string, StoryDecoratorFactory[]> = {};
 let libraryReference = new Set<any>();
 
-let newDecorators: StoryDecoratorFactory[] = [];
+let newDecorators: StoryDecoratorFactory[] | undefined = undefined;
 
 export const removeAllIncludes = () => {
   libraryIsDirty = true;
@@ -12,7 +12,10 @@ export const removeAllIncludes = () => {
   libraryReference = new Set();
 };
 
-export const addStoryDecorators = (factory: StoryDecoratorFactory): void => {
+export const addStoryDecorators = <ReturnType = any>(factory: StoryDecoratorFactory<ReturnType>): void => {
+  if (!newDecorators) {
+    throw new Error('addStoryDecorators should be called inside default export function');
+  }
   newDecorators.push(factory);
 };
 
@@ -32,12 +35,19 @@ export const prepareLibrary = () => {
 };
 
 export const registerStorybookInclude = (filename: string, importer: () => any) => {
-  newDecorators = [];
+  newDecorators = undefined;
   const decorators = importer();
-  if (!decorators || !libraryReference.has(decorators)) {
+  const typeDefault = typeof decorators.default;
+  if (typeof decorators.default !== 'function') {
+    throw new Error(filename + ' default export is expected to be a function, ' + typeDefault + ' given');
+  }
+  if (!libraryReference.has(decorators)) {
+    newDecorators = [];
+    decorators.default();
     library[filename] = newDecorators;
     libraryReference.add(decorators);
     libraryIsDirty = true;
+    newDecorators = undefined;
   }
 };
 

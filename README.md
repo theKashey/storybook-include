@@ -66,25 +66,33 @@ Example file
 // storybook.include.js
 import { addStoryDecorators } from 'storybook-include';
 
-addStoryDecorators((story, { storyName, fileName }) => {
-  // you can mutate story
-  story.args = { decorated: true };
-  // you can add decorators
-  story.decorators.push(myDecorator);
-  // you can return an array of decorators to add
-  return storyName.includes('dark') ? [darkModeDecorator] : undefined;
-});
+// decorators are defined via default export
+export default () => {
+  addStoryDecorators((story, { storyName, fileName }) => {
+    // you can mutate story
+    story.args = { decorated: true };
+    // you can add decorators
+    story.decorators.push(myDecorator);
+    // you can return an array of decorators to add
+    return storyName.includes('dark') ? [darkModeDecorator] : undefined;
+  });
 
-// another set
-addStoryDecorators((story, { fileName }) => {
-  return fileName.includes('page') ? [ReactRouterDecorator, StaticRouterDecorator] : undefined;
-});
+  // another set
+  addStoryDecorators((story, { fileName }) => {
+    return fileName.includes('page') ? [ReactRouterDecorator, StaticRouterDecorator] : undefined;
+  });
 
-// another set
-addStoryDecorators((story) => {
-  return [CSSInJS, Theme, AndSomethingElse];
-});
+  // another set
+  addStoryDecorators((story) => {
+    return [CSSInJS, Theme, AndSomethingElse];
+  });
+};
 ```
+
+## Reusing configuration
+
+In rare cases you might consider sharing the same configuration between two configuration files.
+While simple duplication is usually preferred, there is simpler way to do it
 
 ## Note on caching
 
