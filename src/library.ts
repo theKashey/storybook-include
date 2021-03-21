@@ -6,12 +6,30 @@ let libraryReference = new Set<any>();
 
 let newDecorators: StoryDecoratorFactory[] | undefined = undefined;
 
+/**
+ * removes all configured includes
+ * @deprecated upi probably don't need this command
+ */
 export const removeAllIncludes = () => {
   libraryIsDirty = true;
   library = {};
   libraryReference = new Set();
 };
 
+/**
+ * adds a new decorators to the stories underlaying in the folder structure
+ *
+ * @example
+ * ```ts
+ * // storybook.include.ts
+ * export default () => {
+ *   addStoryDecorators(() => [someDecorator, anotherDecorator]);
+ *   addStoryDecorators((story) => {
+ *     directlyPatchStory(story);
+ *   });
+ *   addStoryDecorators((_, {name}) => name.includes('dark')? [darkModeTheme]:[lightModeTheme];
+ * }
+ */
 export const addStoryDecorators = <ReturnType = any>(factory: StoryDecoratorFactory<ReturnType>): void => {
   if (!newDecorators) {
     throw new Error('addStoryDecorators should be called inside default export function');
@@ -34,6 +52,12 @@ export const prepareLibrary = () => {
   }
 };
 
+/**
+ * @deprecated this API is not expected to be used by the end user
+ * @see {@link addStoryDecorators}
+ * @param filename
+ * @param importer
+ */
 export const registerStorybookInclude = (filename: string, importer: () => any) => {
   newDecorators = undefined;
   const decorators = importer();
