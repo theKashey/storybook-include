@@ -27,10 +27,10 @@
 
 Storybook decorators are very powerful, but with great power comes great responsibility.
 
-In the beginning you are ok to define global decorators, but while project grows different paths might require different
-management and different decorators.
+In the beginning it is ok to define global decorators. But as the project grows, different paths might require different
+management or decorators.
 
-Adding such decorators to the every story is also not a good idea from a maintanance point of view.
+Adding these decorators to the every story does not scale from a maintanance point of view.
 
 So, what about **defining decorators on a folder level**?
 
@@ -39,7 +39,7 @@ So, what about **defining decorators on a folder level**?
 Install this addon by adding the `storybook-include` dependency:
 
 ```
-yarn add -D @storybook/addon-links
+yarn add -D storybook-include
 ```
 
 within .storybook/main.js:
