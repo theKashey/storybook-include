@@ -34,6 +34,8 @@ Adding these decorators to the every story does not scale from a maintanance poi
 
 So, what about **defining decorators on a folder level**?
 
+> 😎 think about it as [.eslintrc](https://eslint.org/docs/user-guide/configuring/configuration-files#cascading-and-hierarchy) or [.babelrc](https://babel.dev/docs/en/config-files#file-relative-configuration) configuration you can have globally defined as well as "per folder"
+
 # Setup
 
 Install this addon by adding the `storybook-include` dependency:
