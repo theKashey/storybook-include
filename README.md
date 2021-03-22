@@ -100,6 +100,24 @@ export default () => {
 In rare cases you might consider sharing the same configuration between two configuration files.
 While simple duplication is usually preferred, there is simpler way to do it
 
+## Using for not `.stories.*`
+
+Sometimes a non-standard file names for stories can be used - `.story.*`, `example.*` and so on.
+In this case default preset will not work, and a custom one will be required
+
+```js
+// your custom preset
+/* eslint-disable no-param-reassign */
+export function babel(options) {
+  options.overrides = options.overrides || [];
+  options.overrides.push({
+    test: /\.stories\.tsx?/, // <-- pattern matching your stories
+    plugins: [require.resolve('storybook-include/babel')],
+  });
+  return options;
+}
+```
+
 ## Note on caching
 
 While storybook does not enforce build caching this plugin is built with it in mind. As a result every file "

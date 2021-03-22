@@ -1,0 +1,5 @@
+{
+  "main": "../dist/es5/babel.js",
+  "module": "../dist/es2015/babel.js",
+  "module:es2019": "../dist/es2019/babel.js"
+}
