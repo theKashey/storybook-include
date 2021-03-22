@@ -126,6 +126,8 @@ autoconfigures" all "include files" above it, and every other file can
 
 Theoretically that affects performance for non cached systems.
 
+⛔️ removing-renaming _include file_ might require cache update.
+
 ## See also
 
 - [storybook-csf-title](https://github.com/atlassian-labs/babel-plugin-storybook-csf-title) - a plugin with close semantic - creates `title` for a storybook basing on the location of a story file.
