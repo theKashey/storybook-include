@@ -98,7 +98,18 @@ export default () => {
 ## Reusing configuration
 
 In rare cases you might consider sharing the same configuration between two configuration files.
-While simple duplication is usually preferred, there is simpler way to do it
+While simple duplication is usually preferred, there is a simpler way to do it
+
+```js
+// storybook.include
+import another from '../../other/storybook.include';
+// ^ it's from another "branch", all explit parents will be "included" in any case
+
+export default () => {
+  // do you thing
+  another();
+};
+```
 
 ## Using for not `.stories.*`
 

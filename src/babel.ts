@@ -20,6 +20,8 @@ const tryFindInclude = (path: string): string | undefined => {
   return undefined;
 };
 
+const fixRelative = (rel: string): string => (rel[0] === '.' ? rel : `./${rel}`);
+
 function findIncludes(file: string) {
   let path = file;
   const found: Array<[string, string]> = [];
@@ -28,7 +30,7 @@ function findIncludes(file: string) {
   while (path.length > 1) {
     const file = tryFindInclude(path);
     if (file) {
-      found.push([path + sep, relative(context, file)]);
+      found.push([path + sep, fixRelative(relative(context, file))]);
     }
     path = dirname(path);
   }
@@ -59,16 +61,18 @@ const plugin = (args: BabelTypes): PluginObj => {
             templateOptions
           );
 
-          programPath.node.body.unshift(headerTemplate());
+          findIncludes(filename).forEach(([absoluteImport, relativeImport]) => {
+            programPath.node.body.unshift(template.statement(`import '${relativeImport}';`, templateOptions)());
 
-          findIncludes(filename).forEach(([absoluteImport, relativeImport]) =>
             programPath.node.body.push(
               importTaggerStat({
                 ABSOLUTE_PATH: t.stringLiteral(absoluteImport),
                 FILENAME: t.stringLiteral(relativeImport),
               })
-            )
-          );
+            );
+          });
+
+          programPath.node.body.unshift(headerTemplate());
 
           programPath.traverse({
             ExportNamedDeclaration: (path) => {
